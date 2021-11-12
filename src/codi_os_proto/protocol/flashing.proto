@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package protocol_flashing;
+
+import "common/variants.proto";
+
+message QueryFlashRequest {
+    int32 firmwareVersion = 1;
+    protocol_common_variants.CoDiVariant firmwareVariant = 2;
+}

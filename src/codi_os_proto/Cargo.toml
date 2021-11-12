@@ -1,0 +1,18 @@
+[package]
+name = "codi_os_proto"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+
+[dependencies.prost]
+version = "0.9.0"
+default-features = false
+features = ["prost-derive"]
+
+[dependencies.prost-types]
+version = "0.9.0"
+default-features = false
+
+[build-dependencies]
+prost-build = "0.9.0"

@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package protocol_common_variants;
+
+enum CoDiVariant {
+    STOCK = 0;
+    CODIOS = 1;
+}
