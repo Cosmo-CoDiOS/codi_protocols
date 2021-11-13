@@ -4,7 +4,9 @@ package protocol_flashing;
 
 import "common/variants.proto";
 
-message QueryFlashRequest {
+message QueryFlashRequest {}
+
+message QueryFlashResponse {
     int32 firmwareVersion = 1;
     protocol_common_variants.CoDiVariant firmwareVariant = 2;
 }
