@@ -5,10 +5,6 @@ edition = "2018"
 
 [dependencies]
 
-[dependencies.structure]
-git = "https://github.com/Cosmo-CoDiOS/structure"
-tag = "0.1.3"
-
 [dependencies.codi_proto_common]
 git = "https://github.com/Cosmo-CoDiOS/codi_protos"
 branch = "main"
