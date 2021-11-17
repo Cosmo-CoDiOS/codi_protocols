@@ -18,5 +18,6 @@ default-features = false
 git = "https://github.com/Cosmo-CoDiOS/codi_protos"
 branch = "main"
 
-[build-dependencies]
-prost-build = "0.9.0"
+[build-dependencies.prost-build]
+version = "0.9.0"
+default-features = false
