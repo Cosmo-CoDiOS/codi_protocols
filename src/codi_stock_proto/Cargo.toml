@@ -4,4 +4,8 @@ version = "0.1.0"
 edition = "2018"
 
 [dependencies]
-serialport = "*"
+structure = "0.1.2"
+
+[dependencies.codi_proto_common]
+git = "https://github.com/Cosmo-CoDiOS/codi_protos"
+branch = "main"
