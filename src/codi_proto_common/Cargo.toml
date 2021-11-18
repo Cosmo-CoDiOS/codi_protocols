@@ -3,5 +3,7 @@ name = "codi_proto_common"
 version = "0.1.0"
 edition = "2021"
 
-[dependencies]
+[features]
 std = []
+
+[dependencies]
