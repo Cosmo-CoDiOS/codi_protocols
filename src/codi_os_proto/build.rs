@@ -5,8 +5,7 @@ fn main() {
     config.btree_map(&["."]);
     config.out_dir("./src");
 
-    config.compile_protos(
-        &["protocol/flashing.proto"],
-        &["protocol"])
+    config
+        .compile_protos(&["protocol/flashing.proto"], &["protocol"])
         .unwrap();
 }
