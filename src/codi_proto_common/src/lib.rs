@@ -1,3 +1,4 @@
+//! This crate handles UART communication between the `CoDi` chip and the host ROM.
 #![deny(
     missing_copy_implementations,
     missing_debug_implementations,
