@@ -1,3 +1,4 @@
+//! This crate defines the protocol for `codid` and other tooling to communicate with stock `CoDi`.
 #![deny(
     missing_copy_implementations,
     missing_debug_implementations,
@@ -14,8 +15,6 @@
     variant_size_differences
 )]
 #![no_std]
-
-//! This module specifies the protocol uses by the Mediatek chip and `CoDi` chip.
 
 // Protocol docs to be added later - `non_camel_case_types` lint must remain allowed.
 #[allow(missing_docs, non_camel_case_types, dead_code)]
