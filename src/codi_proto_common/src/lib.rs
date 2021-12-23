@@ -1,4 +1,5 @@
 //! This crate handles UART communication between the `CoDi` chip and the host ROM.
+#![cfg_attr(any(target_arch = "arm"), no_std)]
 #![deny(
     missing_copy_implementations,
     missing_debug_implementations,
@@ -11,11 +12,11 @@
     unsafe_code,
     unused_import_braces,
     unused_qualifications,
-    unused_extern_crates,
+//    unused_extern_crates, temporarily disable!
     variant_size_differences
 )]
-#![no_std]
 
-#[cfg(feature = "std")]
-#[macro_use]
-extern crate std;
+#[cfg(target_arch = "arm")]
+extern crate alloc;
+#[cfg(target_arch = "arm")]
+extern crate core;
