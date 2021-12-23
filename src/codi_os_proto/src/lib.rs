@@ -1,3 +1,4 @@
+//! This crate defines the protocol for `codid`, and other tooling, to communicate with `CoDiOS`.
 #![deny(
     missing_copy_implementations,
     missing_debug_implementations,
@@ -14,6 +15,3 @@
     variant_size_differences
 )]
 #![no_std]
-
-mod protocol_common_variants;
-pub use protocol_common_variants::CoDiVariant;
