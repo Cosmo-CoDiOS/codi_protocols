@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package protocol_common_self;
+
+// The direction of the packet.
+enum PacketDirection {
+    TO_CODI = 0;
+    FROM_CODI = 1;
+}
+
+// The origin/destination of the packet.
+enum PacketOriginDest {
+    ANDROID = 0;
+    CODI_OS = 1;
+    GEMIAN = 2;
+    LINEAGE = 3;
+    PM_OS = 4;
+    SAILFISH = 5;
+    UBPORTS = 7;
+}
+
+// Holder for metadata of each packet.
+message Self {
+    PacketDirection packetDirection = 1;
+    PacketOriginDest packetOrigin = 2;
+    PacketOriginDest packetDestination = 3;
+}
