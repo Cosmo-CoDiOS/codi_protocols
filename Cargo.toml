@@ -2,7 +2,9 @@
 members = [
     "src/codi_stock_proto",
     "src/codi_os_proto",
-    "src/codi_proto_common"
+    "src/codi_daemon_proto",
+    "src/codi_proto_common",
+    "src/codi_bootload_proto" 
 ]
 
 [profile.dev]
