@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package protocol_command_telephony;
+
+import "common/self.proto";
+
+// Notification of missed call
+message CommandTelephonyMissedCallNotify {
+    protocol_common_self.Self _self = 1;
+    bool isSpam = 2;
+}

@@ -6,6 +6,6 @@ fn main() {
     config.out_dir("./src");
 
     config
-        .compile_protos(&["protocol/flashing.proto"], &["protocol"])
+        .compile_protos(&["protocol/command_telephony.proto"], &["protocol"])
         .unwrap();
 }
