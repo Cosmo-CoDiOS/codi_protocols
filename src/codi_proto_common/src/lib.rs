@@ -20,3 +20,6 @@
 extern crate alloc;
 #[cfg(target_arch = "arm")]
 extern crate core;
+
+#[cfg(not(feature = "runs-on-stm32")]
+pub mod std_serial_handler;
