@@ -1,7 +1,5 @@
 //! This crate defines the protocol for communicating with the new CoDi bootloader (`codi_bootload`)
 #![deny(
-    missing_copy_implementations,
-    missing_debug_implementations,
     missing_docs,
     clippy::all,
     clippy::pedantic,
@@ -14,3 +12,12 @@
     unused_extern_crates,
     variant_size_differences
 )]
+
+#[allow(missing_docs)]
+pub mod protocol_common_self;
+
+#[allow(missing_docs)]
+pub mod protocol_bootload_flashing;
+
+#[allow(missing_docs)]
+pub mod protocol_common_variants;
