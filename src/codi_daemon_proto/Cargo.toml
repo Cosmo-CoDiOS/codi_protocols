@@ -4,11 +4,6 @@ version = "0.1.0"
 edition = "2018"
 
 [dependencies]
-jsonrpc-core = "18.0.0"
-jsonrpc-core-client = "18.0.0"
-jsonrpc-ipc-server = "18.0.0"
-jsonrpc-server-utils = "18.0.0"
-jsonrpc-derive = "18.0.0"
 
 [dependencies.codi_proto_common]
 git = "https://github.com/Cosmo-CoDiOS/codi_protos"
