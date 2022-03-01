@@ -12,7 +12,7 @@
     unsafe_code,
     unused_import_braces,
     unused_qualifications,
-//    unused_extern_crates, temporarily disable!
+    unused_extern_crates,
     variant_size_differences
 )]
 
