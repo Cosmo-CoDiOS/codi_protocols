@@ -1,5 +1,5 @@
 //! This crate handles UART communication between the `CoDi` chip and the host ROM.
-#![cfg_attr(any(target_arch = "arm"), no_std)]
+#![cfg_attr(all(target_arch = "arm"), no_std)]
 #![deny(
     missing_copy_implementations,
     missing_debug_implementations,
@@ -16,9 +16,9 @@
     variant_size_differences
 )]
 
-#[cfg(target_arch = "arm")]
+#[cfg(all(target_arch = "arm", feature = "runs-on-stm32"))]
 extern crate alloc;
-#[cfg(target_arch = "arm")]
+#[cfg(all(target_arch = "arm", feature = "runs-on-stm32"))]
 extern crate core;
 
 #[cfg(not(feature = "runs-on-stm32"))]
