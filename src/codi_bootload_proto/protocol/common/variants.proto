@@ -2,8 +2,8 @@ syntax = "proto3";
 
 package protocol_common_variants;
 
-// This is a 
+// Enum defines the two (currently) different variants of CoDi.
 enum CoDiVariant {
-    STOCK = 0;
-    CODIOS = 1;
+    STOCK = 0; // Stock CoDi enum value is an integer.
+    CODIOS = 1; // CoDiOS enum value is an integer.
 }
