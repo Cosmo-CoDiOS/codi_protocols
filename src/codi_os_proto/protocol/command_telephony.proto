@@ -4,8 +4,17 @@ package protocol_command_telephony;
 
 import "common/self.proto";
 
-// Notification of missed call
+// Notification of missed call.
 message CommandTelephonyMissedCallNotify {
-    protocol_common_self.Self _self = 1;
+    protocol_common_self.Self _self = 1; // Metadata of packet.
+    bool isSpam = 2; // Taken from Android's built-in spam monitoring; if not supported, default to false.
+    bool isKnownContact = 3; // Taken from whenever `codid` is aware of registered known contacts..
+    bool suppress = 4;
+}
+
+message CommandSMSNewNotify {
+    protocol_common_self.Self _self = 1; // Metadata of packet.
     bool isSpam = 2;
+    bool isKnownContact = 3;
+    bool suppress = 4;
 }

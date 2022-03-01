@@ -1,7 +1,5 @@
 //! This crate defines the protocol for `codid`, and other tooling, to communicate with `CoDiOS`.
 #![deny(
-    missing_copy_implementations,
-    missing_debug_implementations,
     missing_docs,
     clippy::all,
     clippy::pedantic,
@@ -15,3 +13,9 @@
     variant_size_differences
 )]
 #![no_std]
+
+#[allow(missing_docs)]
+pub mod protocol_common_self;
+
+#[allow(missing_docs)]
+pub mod protocol_command_telephony;
