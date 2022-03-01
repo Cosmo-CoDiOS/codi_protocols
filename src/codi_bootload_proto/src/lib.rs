@@ -1,5 +1,6 @@
 //! This crate defines the protocol for communicating with the new CoDi bootloader (`codi_bootload`)
 #![deny(
+    warnings,
     missing_docs,
     clippy::all,
     clippy::pedantic,

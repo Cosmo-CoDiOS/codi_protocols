@@ -1,6 +1,7 @@
 //! This crate handles UART communication between the `CoDi` chip and the host ROM.
 #![cfg_attr(all(target_arch = "arm"), no_std)]
 #![deny(
+    warnings,
     missing_copy_implementations,
     missing_debug_implementations,
     missing_docs,

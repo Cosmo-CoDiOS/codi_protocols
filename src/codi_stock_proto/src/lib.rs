@@ -1,5 +1,6 @@
 //! This crate defines the protocol for `codid` and other tooling to communicate with stock `CoDi`.
 #![deny(
+    warnings,
     missing_copy_implementations,
     missing_debug_implementations,
     missing_docs,

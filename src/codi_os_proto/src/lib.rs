@@ -1,5 +1,6 @@
 //! This crate defines the protocol for `codid`, and other tooling, to communicate with `CoDiOS`.
 #![deny(
+    warnings,
     missing_docs,
     clippy::all,
     clippy::pedantic,

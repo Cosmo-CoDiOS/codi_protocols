@@ -1,6 +1,7 @@
 //! This crate defines the JSON-RPC protocol between `codid` and the host ROM, which in turn
 //! communicates with either `CoDiOS` or stock `CoDi`.
 #![deny(
+    warnings,
     missing_copy_implementations,
     missing_debug_implementations,
     missing_docs,
