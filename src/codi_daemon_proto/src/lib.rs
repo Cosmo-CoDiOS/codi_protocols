@@ -16,3 +16,24 @@
     unused_extern_crates,
     variant_size_differences
 )]
+
+use serde::{Serialize, Deserialize};
+
+/// Metadata JSON object for RPC requests.
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct RequestMetadata {
+    #[serde(rename = "sourceRom")]
+    pub source_rom: String,
+    #[serde(rename = "timeStamp")]
+    pub ts: String
+}
+
+
+/// Metadata JSON object for RPC responses
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct ResponseMetadata {
+    #[serde(rename = "destRom")]
+    pub dest_rom: String,
+    #[serde(rename = "timeStamp")]
+    pub ts: String
+}
