@@ -1,7 +1,7 @@
 [package]
 name = "codi_os_proto"
 version = "0.1.0"
-edition = "2018"
+edition = "2021"
 
 [dependencies]
 
@@ -17,6 +17,8 @@ default-features = false
 [dependencies.codi_proto_common]
 git = "https://github.com/Cosmo-CoDiOS/codi_protos"
 branch = "main"
+default-features = false
+features = ["runs-on-stm32"]
 
 [build-dependencies.prost-build]
 version = "0.9.0"
