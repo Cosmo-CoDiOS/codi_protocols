@@ -22,18 +22,16 @@ use serde::{Serialize, Deserialize};
 /// Metadata JSON object for RPC requests.
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct RequestMetadata {
-    #[serde(rename = "sourceRom")]
-    pub source_rom: String,
+    /// Timestamp of the message *to* the daemon.
     #[serde(rename = "timeStamp")]
-    pub ts: String
+    pub time_stamp: String
 }
 
 
 /// Metadata JSON object for RPC responses
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ResponseMetadata {
-    #[serde(rename = "destRom")]
-    pub dest_rom: String,
+    /// Timestamp of the message *from* the daemon.
     #[serde(rename = "timeStamp")]
-    pub ts: String
+    pub time_stamp: String
 }
