@@ -29,7 +29,7 @@ pub enum PacketSendError {
 }
 
 /// This trait (`StockCoDiPacketTrait`) acts as a specificiation for each indvidiual incoming/outgoing stock CoDi serial packet.
-pub(crate) trait StockCoDiPacketTrait {
+pub trait StockCoDiPacketTrait {
     fn send_packet(&self) -> Result<(), PacketSendError>;
     fn get_header(&self) -> [u8; 4];
     fn get_command(&self) -> StockCoDiPacketCommand;
@@ -37,7 +37,7 @@ pub(crate) trait StockCoDiPacketTrait {
     fn set_payload(&mut self, payload: Vec<u8>);
 }
 
-pub(crate) struct StockCoDiPacket {
+pub struct StockCoDiPacket {
     header: [u8; 4],
     cmd: StockCoDiPacketCommand,
     payload: Vec<u8>,
@@ -45,7 +45,7 @@ pub(crate) struct StockCoDiPacket {
 
 impl StockCoDiPacket {
     #[allow(dead_code)] // temporary fix
-    pub(crate) fn new(cmd: StockCoDiPacketCommand, payload: Vec<u8>) -> Self {
+    pub fn new(cmd: StockCoDiPacketCommand, payload: Vec<u8>) -> Self {
         Self {
             header: CODI_STOCK_PACKET_HEADER,
             cmd: cmd,

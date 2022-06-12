@@ -1,12 +1,13 @@
 [package]
-name = "codi_proto_common"
+name = "codi_protocol_common"
 version = "0.1.0"
 edition = "2021"
 
 [features]
 default = ["std"]
 std = ["serialport"]
-runs-on-stm32 = []
+stm32 = []
 
 [dependencies]
 serialport = { version = "4.2.0", optional = true }
+core2 = "0.4.0"

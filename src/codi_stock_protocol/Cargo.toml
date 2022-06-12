@@ -1,0 +1,10 @@
+[package]
+name = "codi_stock_protocol"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+
+[dependencies.codi_protocol_common]
+git = "https://github.com/Cosmo-CoDiOS/codi_protocols"
+branch = "main"

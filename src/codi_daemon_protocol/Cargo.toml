@@ -1,12 +1,13 @@
 [package]
-name = "codi_daemon_proto"
+name = "codi_daemon_protocol"
 version = "0.1.0"
 edition = "2021"
 
 [dependencies]
 serde = { version = "1.0.137", features = ["derive"] }
+core2 = "0.4.0"
 
-[dependencies.codi_proto_common]
-git = "https://github.com/Cosmo-CoDiOS/codi_protos"
+[dependencies.codi_protocol_common]
+git = "https://github.com/Cosmo-CoDiOS/codi_protocols"
 branch = "main"
 features = ["std"]

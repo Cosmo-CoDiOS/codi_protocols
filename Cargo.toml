@@ -1,10 +1,10 @@
 [workspace]
 members = [
-    "src/codi_stock_proto",
-    "src/codi_os_proto",
-    "src/codi_daemon_proto",
-    "src/codi_proto_common",
-    "src/codi_bootload_proto" 
+    "src/codi_bootload_protocol",
+    "src/codi_daemon_protocol",
+    "src/codi_os_protocol",
+    "src/codi_protocol_common",
+    "src/codi_stock_protocol",
 ]
 
 [profile.dev]
