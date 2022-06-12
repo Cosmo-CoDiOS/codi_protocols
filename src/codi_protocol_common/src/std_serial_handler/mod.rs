@@ -3,7 +3,7 @@
 use std::time;
 
 /// Open serial
-pub fn open_serial_conn(device_node: &str, baud_rate: usize) {    
+pub fn open_serial_conn(device_node: &str, baud_rate: u32) {    
     let ports = serialport::available_ports()
         .expect("No ports found!");
 
