@@ -17,10 +17,5 @@
     variant_size_differences
 )]
 
-#[cfg(all(target_arch = "arm", feature = "runs-on-stm32"))]
-extern crate alloc;
-#[cfg(all(target_arch = "arm", feature = "runs-on-stm32"))]
-extern crate core;
-
-#[cfg(not(feature = "runs-on-stm32"))]
+#[cfg(not(feature = "stm32"))]
 pub mod std_serial_handler;
