@@ -15,13 +15,13 @@
     unused_extern_crates,
     variant_size_differences
 )]
-#![allow(dead_code)]
+#![allow(dead_code, missing_docs, unused_variables)]
 #![no_std]
 
 extern crate alloc;
 
-mod stock_commands;
-mod packet;
-
 pub use packet::*;
 pub use stock_commands::*;
+
+mod packet;
+mod stock_commands;

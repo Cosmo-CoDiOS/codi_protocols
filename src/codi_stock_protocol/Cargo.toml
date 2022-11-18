@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+structure = { git = "https://github.com/Cosmo-CoDiOS/structure", branch = "birkenfeld" }
 
 [dependencies.codi_protocol_common]
-git = "https://github.com/Cosmo-CoDiOS/codi_protocols"
-branch = "main"
+path = "../codi_protocol_common"

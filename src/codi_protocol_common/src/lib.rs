@@ -17,5 +17,5 @@
     variant_size_differences
 )]
 
-#[cfg(not(feature = "stm32"))]
+#[cfg(feature = "std")]
 pub mod std_serial_handler;
