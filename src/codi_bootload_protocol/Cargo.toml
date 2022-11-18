@@ -22,5 +22,5 @@ features = ["stm32"]
 default-features = false
 
 [build-dependencies.prost-build]
-version = "0.10.4"
+version = "0.11.2"
 default-features = false
