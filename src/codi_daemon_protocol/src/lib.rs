@@ -16,22 +16,62 @@
     unused_extern_crates,
     variant_size_differences
 )]
+#![allow(missing_docs)]
 
-use serde::{Serialize, Deserialize};
+use serde::{Deserialize, Serialize};
 
-/// Metadata JSON object for RPC requests.
-#[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct RequestMetadata {
-    /// Timestamp of the message *to* the daemon.
-    #[serde(rename = "timeStamp")]
-    pub time_stamp: String
+#[derive(Debug, Clone, Copy, Eq, PartialEq, Serialize, Deserialize)]
+pub enum OriginDestROMKind {
+    Android,
+    UBPorts,
+    PostmarketOS,
+    Gemian,
+    Undefined,
 }
 
+impl Default for OriginDestROMKind {
+    fn default() -> Self {
+        Self::Undefined
+    }
+}
+
+type OriginROMKind = OriginDestROMKind;
+type DestROMKind = OriginDestROMKind;
+
+/// Metadata JSON object for RPC requests.
+#[derive(Debug, Default, Copy, Clone, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct RequestMetadata {
+    pub origin_rom: OriginROMKind,
+}
 
 /// Metadata JSON object for RPC responses
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, Copy, Clone, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
 pub struct ResponseMetadata {
-    /// Timestamp of the message *from* the daemon.
-    #[serde(rename = "timeStamp")]
-    pub time_stamp: String
+    pub dest_rom: DestROMKind,
+}
+
+#[derive(Debug, Copy, Clone, Eq, PartialEq, Serialize, Deserialize)]
+pub enum QueueStateKind {
+    Paused,
+    Rejecting,
+    Accepting,
+    Undefined,
+}
+
+impl Default for QueueStateKind {
+    fn default() -> Self {
+        Self::Undefined
+    }
+}
+
+#[derive(Debug, Copy, Clone, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+
+pub struct QueueStateChangeMethodRequest {
+    #[serde(rename = "_self")]
+    /// Metadata struct.
+    pub self_metadata: RequestMetadata,
+    pub queue_state: QueueStateKind,
 }

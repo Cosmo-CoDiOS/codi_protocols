@@ -6,6 +6,7 @@ edition = "2021"
 [dependencies]
 serde = { version = "1.0.137", features = ["derive"] }
 core2 = "0.4.0"
+chrono = "0.4.19"
 
 [dependencies.codi_protocol_common]
 git = "https://github.com/Cosmo-CoDiOS/codi_protocols"
