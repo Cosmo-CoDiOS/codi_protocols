@@ -9,6 +9,7 @@ const CODI_STOCK_PACKET_HEADER: [u8; 4] = [58, 21, 58, 21];
 #[derive(Debug, PartialEq, Eq, Clone, Copy)]
 pub enum PacketSendError {
     UartNotAvailable,
+    UartBusy,
     MiscError,
 }
 
