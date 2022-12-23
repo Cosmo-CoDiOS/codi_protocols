@@ -1,5 +1,5 @@
 [package]
-name = "codi_bootload_protocol"
+name = "codi_boot_protocol"
 version = "0.1.0"
 edition = "2021"
 
