@@ -1,6 +1,6 @@
 [workspace]
 members = [
-    "src/codi_bootload_protocol",
+    "src/codi_boot_protocol",
     "src/codi_daemon_protocol",
     "src/codi_os_protocol",
     "src/codi_protocol_common",

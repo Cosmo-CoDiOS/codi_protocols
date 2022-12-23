@@ -15,11 +15,3 @@
     variant_size_differences
 )]
 
-#[allow(missing_docs)]
-pub mod protocol_common_self;
-
-#[allow(missing_docs)]
-pub mod protocol_bootload_flashing;
-
-#[allow(missing_docs)]
-pub mod protocol_common_variants;
