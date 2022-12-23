@@ -16,7 +16,7 @@
 )]
 
 #[allow(missing_docs)]
-pub mod protocol_boot_flashing;
+pub mod protocol_codi_boot_flashing;
 
 #[allow(missing_docs)]
 pub mod protocol_common_variants;
