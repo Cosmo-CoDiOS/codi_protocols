@@ -15,3 +15,8 @@
     variant_size_differences
 )]
 
+#[allow(missing_docs)]
+pub mod protocol_boot_flashing;
+
+#[allow(missing_docs)]
+pub mod protocol_common_variants;

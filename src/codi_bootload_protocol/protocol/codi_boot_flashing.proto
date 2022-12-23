@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package protocol_codi_boot_flashing;
+
+import "common/variants.proto";
+
+message QueryFlashCommand {}
+
+message QueryFlashResponse {
+    string firmwareVersion = 1;
+    protocol_common_variants.CoDiVariant firmwareVariant = 2;
+}
