@@ -2,15 +2,9 @@ syntax = "proto3";
 
 package protocol_common_self;
 
-// The direction of the packet.
-enum PacketDirection {
-    TO_CODI = 0; // Packets that go TO the CoDi chip.
-    FROM_CODI = 1; // Packets that come FROM the CoDi chip.
-}
-
 // The origin/destination of the packet.
 enum PacketOriginDest {
-    ANDROID = 0; // Stock or Rooted Android.
+    ANDROID = 0; // Stock or Rooted Stock Android.
     CODI_OS = 1; // CoDiOS firmware.
     GEMIAN = 2; // Gemian Linux.
     LINEAGE = 3; // LineageOS custom Android ROM.
@@ -21,7 +15,6 @@ enum PacketOriginDest {
 
 // Holder for metadata of each packet.
 message Self {
-    PacketDirection packetDirection = 1; // Which direction the serial packet is going in.
-    PacketOriginDest packetOrigin = 2; // The origin the packet is going.
-    PacketOriginDest packetDestination = 3; // The destination the serial packet is coming from.
+    PacketOriginDest packetOrigin = 1; // The origin the packet is going.
+    PacketOriginDest packetDestination = 2; // The destination the serial packet is coming from.
 }

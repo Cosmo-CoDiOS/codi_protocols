@@ -1,4 +1,5 @@
 /// Notification of missed call.
+#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CommandTelephonyMissedCallNotify {
     /// Metadata of packet.
@@ -13,6 +14,7 @@ pub struct CommandTelephonyMissedCallNotify {
     #[prost(bool, tag="4")]
     pub suppress: bool,
 }
+#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CommandSmsNewNotify {
     /// Metadata of packet.
