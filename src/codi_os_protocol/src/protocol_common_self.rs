@@ -3,10 +3,10 @@
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Self_ {
     /// The origin the packet is going.
-    #[prost(enumeration = "PacketOriginDest", tag = "1")]
+    #[prost(enumeration="PacketOriginDest", tag="1")]
     pub packet_origin: i32,
     /// The destination the serial packet is coming from.
-    #[prost(enumeration = "PacketOriginDest", tag = "2")]
+    #[prost(enumeration="PacketOriginDest", tag="2")]
     pub packet_destination: i32,
 }
 /// The origin/destination of the packet.
