@@ -3,6 +3,11 @@ name = "codi_daemon_protocol"
 version = "0.2.0"
 edition = "2021"
 
+[features]
+default = ["std"]
+stm32 = ["codi_protocol_common/stm32"]
+std = ["codi_protocol_common/std"]
+
 [dependencies]
 serde = { version = "1.0.152", features = ["derive"] }
 core2 = "0.4.0"
@@ -10,4 +15,4 @@ chrono = "0.4.23"
 
 [dependencies.codi_protocol_common]
 path = "../codi_protocol_common"
-features = ["std"]
+optional = true
