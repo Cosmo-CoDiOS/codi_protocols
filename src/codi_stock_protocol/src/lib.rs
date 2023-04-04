@@ -16,12 +16,9 @@
     variant_size_differences
 )]
 #![allow(dead_code, missing_docs, unused_variables)]
-#![no_std]
 
-extern crate alloc;
-
+pub use commands::*;
 pub use packet::*;
-pub use stock_commands::*;
 
+mod commands;
 mod packet;
-mod stock_commands;

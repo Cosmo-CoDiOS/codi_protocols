@@ -3,8 +3,15 @@ name = "codi_stock_protocol"
 version = "0.2.0"
 edition = "2021"
 
+[features]
+default = []
+stm32 = ["codi_protocol_common/stm32"]
+std = ["codi_protocol_common/std"]
+
 [dependencies]
-structure = { git = "https://github.com/Cosmo-CoDiOS/structure", branch = "birkenfeld" }
+core2 = "0.4.0"
+structure = { git = "https://github.com/liranringel/structure" }
 
 [dependencies.codi_protocol_common]
 path = "../codi_protocol_common"
+optional = true
