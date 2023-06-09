@@ -9,5 +9,5 @@ std = ["serialport"]
 stm32 = []
 
 [dependencies]
-serialport = { version = "4.2.0", optional = true }
+serialport = { version = "4.2.1", optional = true }
 core2 = { version = "0.4.0", default-features = false }
