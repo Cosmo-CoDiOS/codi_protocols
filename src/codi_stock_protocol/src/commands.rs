@@ -2,7 +2,7 @@
 
 // Protocol docs to be added later - `non_camel_case_types` lint must remain allowed.
 #[allow(missing_docs, non_camel_case_types, dead_code)]
-#[derive(Debug, Copy, Clone, PartialEq, Eq)]
+#[derive(Default, Debug, Copy, Clone, PartialEq, Eq)]
 /// This holds an enum of the protocol used to communicate with the Cover Display.
 pub enum StockCoDiPacketCommand {
     CMD_MTK_GET_PROTOCOL_VERSION = 0,
@@ -138,11 +138,6 @@ pub enum StockCoDiPacketCommand {
     CMD_SYNC_SYS_SLEEP_STATUS = 143,
     CMD_SYNC_RIGHT_USB_OTG_STATUS = 144,
     CMD_ST_ENTRY_DEEP_SLEEP_STATUS = 145,
-    UNDEFINED,
-}
-
-impl Default for StockCoDiPacketCommand {
-    fn default() -> Self {
-        Self::UNDEFINED
-    }
+    #[default]
+    UNSPECIFIED,
 }

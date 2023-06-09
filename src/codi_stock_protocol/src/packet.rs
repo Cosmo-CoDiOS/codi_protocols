@@ -4,17 +4,12 @@ use crate::commands::StockCoDiPacketCommand;
 
 const CODI_STOCK_PACKET_HEADER: [u8; 4] = [58, 21, 58, 21];
 
-#[derive(Debug, PartialEq, Eq, Clone, Copy)]
+#[derive(Default, Debug, PartialEq, Eq, Clone, Copy)]
 pub enum PacketSendError {
     UartNotAvailable,
     UartBusy,
+    #[default]
     MiscError,
-}
-
-impl Default for PacketSendError {
-    fn default() -> Self {
-        Self::MiscError
-    }
 }
 
 /// This trait (`StockCoDiPacketTrait`) acts as a specification for each individual incoming/outgoing stock `CoDi` serial packet.
