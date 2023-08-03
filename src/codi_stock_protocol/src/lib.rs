@@ -17,10 +17,7 @@
     unused_extern_crates,
     variant_size_differences
 )]
-#![allow(dead_code, missing_docs, unused_variables)]
-
-pub use commands::*;
-pub use packet::*;
+#![allow(dead_code, unused_variables)] // FIXME: Temporary.
 
 mod commands;
 mod packet;
