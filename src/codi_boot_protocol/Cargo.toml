@@ -3,11 +3,6 @@ name = "codi_boot_protocol"
 version = "0.4.0"
 edition = "2021"
 
-[features]
-default = []
-stm32 = ["codi_protocol_common/stm32"]
-std = ["codi_protocol_common/std"]
-
 [dependencies]
 core2 = { version = "0.4.0", default-features = false }
 
@@ -22,7 +17,6 @@ default-features = false
 
 [dependencies.codi_protocol_common]
 path = "../codi_protocol_common"
-optional = true
 
 [build-dependencies.prost-build]
 version = "0.11.9"

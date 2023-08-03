@@ -3,11 +3,8 @@ name = "codi_protocol_common"
 version = "0.4.0"
 edition = "2021"
 
-[features]
-default = []
-std = ["serialport"]
-stm32 = []
-
 [dependencies]
-serialport = { version = "4.2.1", optional = true }
 core2 = { version = "0.4.0", default-features = false }
+
+[target.'cfg(any(target_arch = "aarch64", target_arch = "x86_64"))'.dependencies]
+serialport = "4.2.1"
