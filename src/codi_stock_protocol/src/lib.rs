@@ -21,3 +21,8 @@
 
 mod commands;
 mod packet;
+mod serial;
+
+pub use commands::StockCoDiPacketCommandKind;
+pub use packet::*;
+pub use serial::*;
