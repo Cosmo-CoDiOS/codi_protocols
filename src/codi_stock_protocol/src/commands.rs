@@ -1,10 +1,13 @@
-//! This module contains an enum of the different stock CoDi high-level commands to be sent over serial.
+//! This module contains an enum of the different stock CoDi high-level commands
+//! to be sent over serial.
 
-// Protocol docs to be added later - `non_camel_case_types` lint must remain allowed.
+// Protocol docs to be added later - `non_camel_case_types` lint must remain
+// allowed.
 #[allow(missing_docs, non_camel_case_types, dead_code)]
 #[derive(Default, Debug, Copy, Clone, PartialEq, Eq)]
-/// This holds an enum of the protocol used to communicate with the Cover Display.
-pub enum StockCoDiPacketCommand {
+/// This holds an enum of the protocol used to communicate with the Cover
+/// Display.
+pub enum StockCoDiPacketCommandKind {
     CMD_MTK_GET_PROTOCOL_VERSION = 0,
     CMD_MTK_GET_CODI_FLASH_VERSION = 1,
     CMD_ST32_INFO_CODI_FLASH_VERSION = 2,
