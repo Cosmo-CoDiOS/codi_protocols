@@ -1,4 +1,6 @@
-//! This crate defines the protocol for `codid`, and other tooling, to communicate with `CoDiOS`.
+//! This crate defines the protocol for `codid`, and other tooling, to
+//! communicate with `CoDiOS`.
+#![cfg_attr(target_arch = "arm", no_std)]
 #![deny(
     warnings,
     missing_docs,
