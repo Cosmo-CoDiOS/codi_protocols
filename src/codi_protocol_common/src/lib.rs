@@ -18,21 +18,21 @@
     variant_size_differences
 )]
 
-#[cfg(not(feature = "std"))]
-pub mod no_std_serial_port_manager;
-
-#[cfg(feature = "std")]
-pub mod std_serial_port_manager;
+#[cfg_attr(target_arch = "arm", path = "embedded_serial.rs")]
+#[cfg_attr(
+    any(target_arch = "aarch64", target_arch = "x86_64"),
+    path = "std_serial.rs"
+)]
+pub mod serial;
 
 // Compiles with both `no_std` and `std`.
+pub mod common;
 
-/// `SerialPortTrait` acts as a generic way to implement a SerialPortManager struct in both
-/// `no_std` and `std` environments.
-pub trait SerialPortManagerTrait {
-    /// `open_serial_port` assigns a `SerialPort` instance to the `serial` field in a
-    /// `SerialPortManager` instance.
-    fn open_serial_port(&mut self, dev: &str, baud_rate: u32);
-    /// `read_packet` uses the `io::Read` trait to read a packet from the serial connection,
-    /// starting with hex `58215821`, or `X!X!`.
-    fn read_packet(&self);
+pub mod reexports {
+    //! Reexports for external crates.
+    pub use super::common;
+    pub use super::serial;
+
+    #[cfg(any(target_arch = "aarch64", target_arch = "x86_64"))]
+    pub use serialport;
 }
