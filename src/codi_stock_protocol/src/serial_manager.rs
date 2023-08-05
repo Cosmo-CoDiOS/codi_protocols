@@ -1,9 +1,12 @@
-use codi_protocol_common::common::{SerialPortManagerError, SerialPortManagerTrait};
+//! This module is for the stock `CoDi` `SerialPortManager`
+
+use codi_protocol_common::common::{SerialPortManagerResult, SerialPortManagerTrait};
 use codi_protocol_common::reexports::serialport;
 use codi_protocol_common::serial::SerialPortManager;
 use core2::io::{Read, Write};
 
 #[allow(missing_debug_implementations)]
+/// This is a wrapper around `SerialPortManager`, as Rust doesn't allow `impl`s of external types.
 pub struct StockCoDiSerialPortManager(SerialPortManager);
 
 impl SerialPortManagerTrait for StockCoDiSerialPortManager {
@@ -11,7 +14,7 @@ impl SerialPortManagerTrait for StockCoDiSerialPortManager {
         &mut self,
         dev_node: Option<&str>,
         baud_rate: u32,
-    ) -> Result<(), SerialPortManagerError> {
+    ) -> SerialPortManagerResult<()> {
         self.0.serial = Some(
             serialport::new(dev_node.unwrap(), baud_rate)
                 .open()
@@ -24,7 +27,7 @@ impl SerialPortManagerTrait for StockCoDiSerialPortManager {
         &self,
         _reader: R,
         _buf_size: usize,
-    ) -> Result<Option<Vec<u8>>, SerialPortManagerError>
+    ) -> SerialPortManagerResult<Option<Vec<u8>>>
     where
         R: Read,
     {
@@ -35,7 +38,7 @@ impl SerialPortManagerTrait for StockCoDiSerialPortManager {
         &mut self,
         _writer: W,
         _payload: Vec<u8>,
-    ) -> Result<usize, SerialPortManagerError>
+    ) -> SerialPortManagerResult<usize>
     where
         W: Write,
     {

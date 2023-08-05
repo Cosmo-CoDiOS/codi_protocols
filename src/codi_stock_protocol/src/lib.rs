@@ -20,9 +20,11 @@
 #![allow(dead_code, unused_variables)] // FIXME: Temporary.
 
 mod commands;
+mod connection;
 mod packet;
-mod serial;
+mod serial_manager;
 
 pub use commands::StockCoDiPacketCommandKind;
+pub use connection::*;
 pub use packet::*;
-pub use serial::*;
+pub use serial_manager::*;

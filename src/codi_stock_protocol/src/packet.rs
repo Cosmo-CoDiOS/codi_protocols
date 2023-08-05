@@ -1,44 +1,45 @@
-//! This module is for the stock CoDi packet handling.
+//! This module is for the stock `CoDi` packet handling.
 
 use codi_protocol_common::common::PacketDirectionKind;
-use codi_protocol_common::serial::SerialPortManager;
 
 use crate::StockCoDiPacketCommandKind;
-
-const CODI_STOCK_PACKET_HEADER: [u8; 4] = [58, 21, 58, 21];
-
-#[allow(missing_debug_implementations)]
-pub struct StockCoDiConnection {
-    packets: Vec<StockCoDiPacket>,
-    serial: SerialPortManager,
-}
 
 /// This trait (`StockCoDiPacketTrait`) acts as a specification for each
 /// individual incoming/outgoing stock `CoDi` serial packet.
 pub trait StockCoDiPacketTrait {
-    fn get_header(&self) -> [u8; 4];
+    /// This is the header used in the stock `CoDi` protocol.
+    const CODI_STOCK_PACKET_HEADER: [u8; 4] = [58, 21, 58, 21];
+    /// This returns the header of each 'stock' `CoDi` packet
+    fn get_header(&self) -> [u8; 4] {
+        Self::CODI_STOCK_PACKET_HEADER
+    }
+    /// This method returns the command used in the packet.
     fn get_command(&self) -> StockCoDiPacketCommandKind;
+    /// This method sets, and returns no value, the command used in the packet.
     fn set_command(&mut self, command: StockCoDiPacketCommandKind);
+    /// This method returns the payload used in the packet.
     fn get_payload(&self) -> Vec<u8>;
+    /// This method sets, and returns no value, the payload used in the packet.
     fn set_payload(&mut self, payload: Vec<u8>);
 }
 
 #[derive(Debug)]
+/// This struct is an *individual* container of each `CoDi` packet.
 pub struct StockCoDiPacket {
-    header: [u8; 4],
     cmd: StockCoDiPacketCommandKind,
     payload: Vec<u8>,
     direction: PacketDirectionKind,
 }
 
 impl StockCoDiPacket {
+    /// This function accepts a 'Command', 'Payload', and the 'Direction' that the `CoDi` packet is
+    /// going.
     pub fn new(
         cmd: StockCoDiPacketCommandKind,
         payload: Vec<u8>,
         direction: PacketDirectionKind,
     ) -> Self {
         Self {
-            header: CODI_STOCK_PACKET_HEADER,
             cmd,
             payload,
             direction,
@@ -49,7 +50,6 @@ impl StockCoDiPacket {
 impl Default for StockCoDiPacket {
     fn default() -> Self {
         Self {
-            header: CODI_STOCK_PACKET_HEADER,
             cmd: Default::default(),
             payload: Vec::new(),
             direction: Default::default(),
@@ -59,7 +59,7 @@ impl Default for StockCoDiPacket {
 
 impl StockCoDiPacketTrait for StockCoDiPacket {
     fn get_header(&self) -> [u8; 4] {
-        self.header.clone()
+        Self::CODI_STOCK_PACKET_HEADER
     }
     fn get_command(&self) -> StockCoDiPacketCommandKind {
         self.cmd
