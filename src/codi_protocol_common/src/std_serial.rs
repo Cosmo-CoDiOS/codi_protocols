@@ -8,6 +8,7 @@ use serialport::SerialPort;
 /// `SerialPortManager` is a struct that manages the serial port connection,
 /// both on `no_std` and `std` environments.
 pub struct SerialPortManager {
+    /// This field holds the ARM64/x86_64 `serialport` trait.
     pub serial: Option<Box<dyn SerialPort>>,
 }
 

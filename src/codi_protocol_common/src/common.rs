@@ -3,19 +3,40 @@
 
 // Compiles with both `no_std` and `std`.
 
-use core2::io::{Error as IoError, Read, Write};
+use core2::io::{Read, Write};
+use self::errors::SerialPortManagerError;
 
-#[allow(dead_code)]
-#[derive(Debug)]
-/// This enum is a plain Enum currently.
-/// At some point, we will use an `no_std`-compatible error handling crate.
-pub enum SerialPortManagerError {
-    /// This type of error is when an I/O problem occurs when reading or writing
-    /// to the UART peripheral.
-    IoError(IoError),
-    /// This error occurs when the UART peripheral cannot be opened.
-    PortOpenError,
+pub mod errors {
+    //! This is an collection of 'errors' that *could* be encountered by `SerialPortManager`.
+    use thiserror_no_std::Error;
+    use core2::io::Error as IoError;
+
+    #[allow(dead_code)]
+    #[derive(Default, Debug, Error)]
+    /// This enum is a plain Enum currently.
+    /// At some point, we will use an `no_std`-compatible error handling crate.
+    pub enum SerialPortManagerError {
+        /// This type of error is when an I/O problem occurs when reading or writing
+        /// to the UART peripheral.
+        #[error("Error performing I/O on UART.")]
+        IoError(#[from] IoError),
+        /// This error occurs when the UART peripheral cannot be opened.
+        #[error("UART could not be opened: {uart_port:?}, busy?: {busy:?}")]
+        PortOpenError {
+            /// A String representation of the UART port ID/device node.
+            uart_port: String,
+            /// `bool` that represents if the UART port is busy.
+            busy: bool
+        },
+        #[default]
+        /// Unknown error, avoid using this.
+        #[error("Unknown error with SerialPortManager.")]
+        Unknown,
+    }
 }
+
+/// This is a custom type alias for `anyhow` in the context of `SerialPortManager`.
+pub type SerialPortManagerResult<T> = anyhow::Result<T, SerialPortManagerError>;
 
 /// `SerialPortManagerTrait` acts as a generic way to implement a
 /// SerialPortManager struct in both `no_std` and `std` environments.
@@ -32,7 +53,7 @@ pub trait SerialPortManagerTrait {
         &mut self,
         dev_node: Option<&str>,
         baud_rate: u32,
-    ) -> Result<(), SerialPortManagerError>;
+    ) -> SerialPortManagerResult<()>;
 
     /// This method is quite generic. It reads a certain amount into a buffer
     /// (based on the value of the `buf_size` parameter), and returns a
@@ -46,7 +67,7 @@ pub trait SerialPortManagerTrait {
         &self,
         _reader: R,
         _buf_size: usize,
-    ) -> Result<Option<Vec<u8>>, SerialPortManagerError>
+    ) -> SerialPortManagerResult<Option<Vec<u8>>>
     where
         R: Read;
 
@@ -64,23 +85,19 @@ pub trait SerialPortManagerTrait {
         &mut self,
         _writer: W,
         _payload: Vec<u8>,
-    ) -> Result<usize, SerialPortManagerError>
+    ) -> SerialPortManagerResult<usize>
     where
         W: Write;
 }
 
-#[derive(Default, Debug, Eq, PartialEq, Clone, Copy)]
-pub enum PacketSendError {
-    UartNotAvailable,
-    UartBusy,
-    #[default]
-    MiscError,
-}
-
-#[derive(Default, Debug, Eq, PartialEq, Clone, Copy)]
+/// `PacketDirectionKind` defines the direction of each `CoDi` packet.
+#[derive(Default, Debug, PartialEq, Eq, Copy, Clone)]
 pub enum PacketDirectionKind {
+    /// `ToCoDi` variant is when the packet is being sent via UART to the STM32.
     ToCoDi,
+    /// `FromCoDi` variant is when the packet is being sent via UART to the STM32.
     FromCoDi,
     #[default]
+    /// This is the default variant, and should be avoided.
     Unknown,
 }
