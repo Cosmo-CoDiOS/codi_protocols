@@ -9,4 +9,4 @@ core2 = { version = "0.4.0", default-features = false }
 thiserror-no-std = "2.0.2"
 
 [target.'cfg(any(target_arch = "aarch64", target_arch = "x86_64"))'.dependencies]
-serialport = "4.2.1"
+serialport = "4.2.2"
