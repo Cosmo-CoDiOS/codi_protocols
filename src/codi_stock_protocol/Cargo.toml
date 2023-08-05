@@ -4,6 +4,7 @@ version = "0.5.0"
 edition = "2021"
 
 [dependencies]
+anyhow = { version = "1.0.72", default-features = false }
 core2 = "0.4.0"
 structure = { git = "https://github.com/liranringel/structure" }
 thiserror-no-std = "2.0.2"
