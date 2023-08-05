@@ -6,6 +6,7 @@ edition = "2021"
 [dependencies]
 core2 = "0.4.0"
 structure = { git = "https://github.com/liranringel/structure" }
+thiserror-no-std = "2.0.2"
 
 [dependencies.codi_protocol_common]
 path = "../codi_protocol_common"
