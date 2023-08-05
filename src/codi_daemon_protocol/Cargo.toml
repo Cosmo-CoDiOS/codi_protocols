@@ -4,6 +4,8 @@ version = "0.5.0"
 edition = "2021"
 
 [dependencies]
+anyhow = { version = "1.0.72", default-features = false }
+thiserror-no-std = "2.0.2"
 
 [dependencies.codi_protocol_common]
 path = "../codi_protocol_common"
