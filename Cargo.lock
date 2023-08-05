@@ -87,6 +87,7 @@ checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
 name = "codi_boot_protocol"
 version = "0.5.0"
 dependencies = [
+ "anyhow",
  "codi_protocol_common",
  "core2",
  "prost",
@@ -99,13 +100,16 @@ dependencies = [
 name = "codi_daemon_protocol"
 version = "0.5.0"
 dependencies = [
+ "anyhow",
  "codi_protocol_common",
+ "thiserror-no-std",
 ]
 
 [[package]]
 name = "codi_os_protocol"
 version = "0.5.0"
 dependencies = [
+ "anyhow",
  "codi_protocol_common",
  "core2",
  "prost",
@@ -118,14 +122,17 @@ dependencies = [
 name = "codi_protocol_common"
 version = "0.5.0"
 dependencies = [
+ "anyhow",
  "core2",
  "serialport",
+ "thiserror-no-std",
 ]
 
 [[package]]
 name = "codi_stock_protocol"
 version = "0.5.0"
 dependencies = [
+ "anyhow",
  "codi_protocol_common",
  "core2",
  "structure",
