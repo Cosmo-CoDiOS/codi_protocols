@@ -16,7 +16,11 @@ impl SerialPortManager {
     #[allow(dead_code)]
     /// This method returns an instance of `SerialPortManager`, with the
     /// `serial` field populated as `None`.
-    pub fn new() -> Self {
-        Self { serial: None }
+    pub fn new(dev: &str, baud: u32) -> Self {
+        Self {
+            serial: Option::from(serialport::new(dev, baud)
+                                .open()
+                                .expect("Unable to open a UART connection.")),
+        }
     }
 }
