@@ -24,14 +24,19 @@ impl SerialPortManagerTrait for StockCoDiSerialPortManager {
     }
 
     fn read_packet<R>(
-        &self,
-        _reader: R,
-        _buf_size: usize,
+        &mut self,
+        reader: R,
+        buf_size: usize,
     ) -> SerialPortManagerResult<Option<Vec<u8>>>
     where
         R: Read,
     {
-        Ok(Some(Default::default()))
+        let mut buf: Vec<u8> = vec![0; buf_size];
+
+        _ = self.0.serial.as_mut().unwrap().read(
+            buf.as_mut_slice());
+
+        Ok(Some(buf))
     }
 
     fn write_packet<W>(

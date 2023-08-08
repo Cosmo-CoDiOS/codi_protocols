@@ -64,7 +64,7 @@ pub trait SerialPortManagerTrait {
     /// `core::cell::RefCell` to perform GC on stored packets, and act as a
     /// continual 'grim reaper' of processed packets.
     fn read_packet<R>(
-        &self,
+        &mut self,
         _reader: R,
         _buf_size: usize,
     ) -> SerialPortManagerResult<Option<Vec<u8>>>
