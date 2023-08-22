@@ -11,15 +11,33 @@ pub struct StockCoDiSerialPortManager(SerialPortManager);
 
 impl SerialPortManagerTrait for StockCoDiSerialPortManager {
     fn open_serial_port(
-        &mut self,
-        dev_node: Option<&str>,
-        baud_rate: u32,
-    ) -> SerialPortManagerResult<()> {
-        self.0.serial = Some(
+            &mut self,
+            dev_node: Option<&str>,
+            baud_rate: u32,
+        ) -> SerialPortManagerResult<()> {
+         self.0.serial = Some(
             serialport::new(dev_node.unwrap(), baud_rate)
                 .open()
                 .unwrap(),
         );
+        Ok(())
+    }
+
+    fn open_serial_cmd_mode(
+        &mut self,
+        dev_node: Option<&str>,
+    ) -> SerialPortManagerResult<()> {
+        self.open_serial_port(dev_node, 115_200)
+            .unwrap();
+        Ok(())
+    }
+
+    fn open_serial_upload_mode(
+        &mut self,
+        dev_node: Option<&str>,
+    ) -> SerialPortManagerResult<()> {
+        self.open_serial_port(dev_node, 230_400)
+            .unwrap();
         Ok(())
     }
 

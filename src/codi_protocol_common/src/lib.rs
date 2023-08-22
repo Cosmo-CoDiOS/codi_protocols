@@ -18,6 +18,9 @@
     variant_size_differences
 )]
 
+#[cfg(target_arch = "arm")]
+extern crate alloc;
+
 #[cfg_attr(target_arch = "arm", path = "embedded_serial.rs")]
 #[cfg_attr(
     any(target_arch = "aarch64", target_arch = "x86_64"),

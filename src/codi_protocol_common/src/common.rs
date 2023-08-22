@@ -3,7 +3,18 @@
 
 // Compiles with both `no_std` and `std`.
 
+#[cfg(target_arch = "arm")]
+use alloc::string::String;
+
+#[cfg(target_arch = "arm")]
+use alloc::vec::Vec;
+
+#[cfg(target_arch = "arm")]
 use core2::io::{Read, Write};
+
+#[cfg(any(target_arch = "x86_64", target_arch = "aarch64"))]
+use std::io::{Read, Write};
+
 use self::errors::SerialPortManagerError;
 
 pub mod errors {
@@ -53,6 +64,18 @@ pub trait SerialPortManagerTrait {
         &mut self,
         dev_node: Option<&str>,
         baud_rate: u32,
+    ) -> SerialPortManagerResult<()>;
+
+    #[allow(missing_docs)]
+    fn open_serial_upload_mode(
+        &mut self,
+        dev_node: Option<&str>,
+    ) -> SerialPortManagerResult<()>;
+
+   #[allow(missing_docs)]
+   fn open_serial_cmd_mode(
+        &mut self,
+        dev_node: Option<&str>,
     ) -> SerialPortManagerResult<()>;
 
     /// This method is quite generic. It reads a certain amount into a buffer
