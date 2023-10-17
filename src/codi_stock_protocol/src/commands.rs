@@ -1,13 +1,35 @@
 //! This module contains an enum of the different stock CoDi high-level commands
 //! to be sent over serial.
 
+macro_rules! back_to_enum {
+    ($(#[$meta:meta])* $vis:vis enum $name:ident {
+        $($(#[$vmeta:meta])* $vname:ident $(= $val:expr)?,)*
+    }) => {
+        $(#[$meta])*
+        $vis enum $name {
+            $($(#[$vmeta])* $vname $(= $val)?,)*
+        }
+
+        impl From<i16> for $name {
+            fn from(v: i16) -> Self {
+                match v {
+                    $(x if x == $name::$vname as i16 => $name::$vname),*,
+                    _ => Default::default(),
+                }
+            }
+        }
+    }
+}
+
 // Protocol docs to be added later - `non_camel_case_types` lint must remain
 // allowed.
-#[allow(missing_docs, non_camel_case_types, dead_code)]
-#[derive(Default, Debug, Copy, Clone, PartialEq, Eq)]
-/// This holds an enum of the protocol used to communicate with the Cover
-/// Display.
-pub enum StockCoDiPacketCommandKind {
+back_to_enum! {
+    #[allow(missing_docs, non_camel_case_types, dead_code)]
+    #[derive(Default, Debug, Copy, Clone)]
+    #[repr(i16)]
+    /// This holds an enum of the protocol used to communicate with the Cover
+    /// Display.
+    pub enum StockCoDiPacketCommandKind {
     CMD_MTK_GET_PROTOCOL_VERSION = 0,
     CMD_MTK_GET_CODI_FLASH_VERSION = 1,
     CMD_ST32_INFO_CODI_FLASH_VERSION = 2,
@@ -143,4 +165,11 @@ pub enum StockCoDiPacketCommandKind {
     CMD_ST_ENTRY_DEEP_SLEEP_STATUS = 145,
     #[default]
     UNSPECIFIED,
+    }
+}
+
+impl From<StockCoDiPacketCommandKind> for i16 {
+    fn from(v: StockCoDiPacketCommandKind) -> Self {
+        v as Self
+    }
 }
