@@ -4,14 +4,15 @@ use codi_protocol_common::common::PacketDirectionKind;
 
 use crate::StockCoDiPacketCommandKind;
 
+/// This is the header used in the stock `CoDi` protocol.
+const CODI_STOCK_PACKET_HEADER: [u8; 4] = [58, 21, 58, 21];
+
 /// This trait (`StockCoDiPacketTrait`) acts as a specification for each
 /// individual incoming/outgoing stock `CoDi` serial packet.
 pub trait StockCoDiPacketTrait {
-    /// This is the header used in the stock `CoDi` protocol.
-    const CODI_STOCK_PACKET_HEADER: [u8; 4] = [58, 21, 58, 21];
     /// This returns the header of each 'stock' `CoDi` packet
     fn get_header(&self) -> [u8; 4] {
-        Self::CODI_STOCK_PACKET_HEADER
+        CODI_STOCK_PACKET_HEADER
     }
     /// This method returns the command used in the packet.
     fn get_command(&self) -> StockCoDiPacketCommandKind;
@@ -59,7 +60,7 @@ impl Default for StockCoDiPacket {
 
 impl StockCoDiPacketTrait for StockCoDiPacket {
     fn get_header(&self) -> [u8; 4] {
-        Self::CODI_STOCK_PACKET_HEADER
+        CODI_STOCK_PACKET_HEADER
     }
     fn get_command(&self) -> StockCoDiPacketCommandKind {
         self.cmd
