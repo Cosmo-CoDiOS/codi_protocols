@@ -48,6 +48,18 @@ impl StockCoDiPacket {
     }
 }
 
+impl Into<Vec<u8>> for StockCoDiPacket {
+    fn into(self) -> Vec<u8> {
+        let mut data: Vec<u8> = Vec::new();
+
+        data.extend(CODI_STOCK_PACKET_HEADER.to_vec());
+        data.push(self.cmd as u8);
+        data.extend(&self.payload);
+
+        data
+    }
+}
+
 impl Default for StockCoDiPacket {
     fn default() -> Self {
         Self {
