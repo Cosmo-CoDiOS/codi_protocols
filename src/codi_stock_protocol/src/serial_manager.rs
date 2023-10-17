@@ -11,11 +11,11 @@ pub struct StockCoDiSerialPortManager(SerialPortManager);
 
 impl SerialPortManagerTrait for StockCoDiSerialPortManager {
     fn open_serial_port(
-            &mut self,
-            dev_node: Option<&str>,
-            baud_rate: u32,
-        ) -> SerialPortManagerResult<()> {
-         self.0.serial = Some(
+        &mut self,
+        dev_node: Option<&str>,
+        baud_rate: u32,
+    ) -> SerialPortManagerResult<()> {
+        self.0.serial = Some(
             serialport::new(dev_node.unwrap(), baud_rate)
                 .open()
                 .unwrap(),
@@ -23,21 +23,13 @@ impl SerialPortManagerTrait for StockCoDiSerialPortManager {
         Ok(())
     }
 
-    fn open_serial_cmd_mode(
-        &mut self,
-        dev_node: Option<&str>,
-    ) -> SerialPortManagerResult<()> {
-        self.open_serial_port(dev_node, 115_200)
-            .unwrap();
+    fn open_serial_cmd_mode(&mut self, dev_node: Option<&str>) -> SerialPortManagerResult<()> {
+        self.open_serial_port(dev_node, 115_200).unwrap();
         Ok(())
     }
 
-    fn open_serial_upload_mode(
-        &mut self,
-        dev_node: Option<&str>,
-    ) -> SerialPortManagerResult<()> {
-        self.open_serial_port(dev_node, 230_400)
-            .unwrap();
+    fn open_serial_upload_mode(&mut self, dev_node: Option<&str>) -> SerialPortManagerResult<()> {
+        self.open_serial_port(dev_node, 230_400).unwrap();
         Ok(())
     }
 
@@ -51,17 +43,12 @@ impl SerialPortManagerTrait for StockCoDiSerialPortManager {
     {
         let mut buf: Vec<u8> = vec![0; buf_size];
 
-        _ = self.0.serial.as_mut().unwrap().read(
-            buf.as_mut_slice());
+        _ = self.0.serial.as_mut().unwrap().read(buf.as_mut_slice());
 
         Ok(Some(buf))
     }
 
-    fn write_packet<W>(
-        &mut self,
-        _writer: W,
-        _payload: Vec<u8>,
-    ) -> SerialPortManagerResult<usize>
+    fn write_packet<W>(&mut self, _writer: W, _payload: Vec<u8>) -> SerialPortManagerResult<usize>
     where
         W: Write,
     {

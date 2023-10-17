@@ -18,9 +18,11 @@ impl SerialPortManager {
     /// `serial` field populated as `None`.
     pub fn new(dev: &str, baud: u32) -> Self {
         Self {
-            serial: Option::from(serialport::new(dev, baud)
-                                .open()
-                                .expect("Unable to open a UART connection.")),
+            serial: Some(
+                serialport::new(dev, baud)
+                    .open()
+                    .expect("Unable to open a UART connection."),
+            ),
         }
     }
 }

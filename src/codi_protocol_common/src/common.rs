@@ -19,8 +19,8 @@ use self::errors::SerialPortManagerError;
 
 pub mod errors {
     //! This is an collection of 'errors' that *could* be encountered by `SerialPortManager`.
-    use thiserror_no_std::Error;
     use core2::io::Error as IoError;
+    use thiserror_no_std::Error;
 
     #[allow(dead_code)]
     #[derive(Default, Debug, Error)]
@@ -37,7 +37,7 @@ pub mod errors {
             /// A String representation of the UART port ID/device node.
             uart_port: String,
             /// `bool` that represents if the UART port is busy.
-            busy: bool
+            busy: bool,
         },
         #[default]
         /// Unknown error, avoid using this.
@@ -67,16 +67,10 @@ pub trait SerialPortManagerTrait {
     ) -> SerialPortManagerResult<()>;
 
     #[allow(missing_docs)]
-    fn open_serial_upload_mode(
-        &mut self,
-        dev_node: Option<&str>,
-    ) -> SerialPortManagerResult<()>;
+    fn open_serial_upload_mode(&mut self, dev_node: Option<&str>) -> SerialPortManagerResult<()>;
 
-   #[allow(missing_docs)]
-   fn open_serial_cmd_mode(
-        &mut self,
-        dev_node: Option<&str>,
-    ) -> SerialPortManagerResult<()>;
+    #[allow(missing_docs)]
+    fn open_serial_cmd_mode(&mut self, dev_node: Option<&str>) -> SerialPortManagerResult<()>;
 
     /// This method is quite generic. It reads a certain amount into a buffer
     /// (based on the value of the `buf_size` parameter), and returns a
@@ -104,11 +98,7 @@ pub trait SerialPortManagerTrait {
     ///
     /// Calling functions should test for `Error`s, react on those, and continue
     /// the flow of execution.
-    fn write_packet<W>(
-        &mut self,
-        _writer: W,
-        _payload: Vec<u8>,
-    ) -> SerialPortManagerResult<usize>
+    fn write_packet<W>(&mut self, _writer: W, _payload: Vec<u8>) -> SerialPortManagerResult<usize>
     where
         W: Write;
 }
