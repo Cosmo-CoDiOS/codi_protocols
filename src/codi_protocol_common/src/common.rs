@@ -50,7 +50,7 @@ pub mod errors {
 pub type SerialPortManagerResult<T> = anyhow::Result<T, SerialPortManagerError>;
 
 /// `SerialPortManagerTrait` acts as a generic way to implement a
-/// SerialPortManager struct in both `no_std` and `std` environments.
+/// `SerialPortManager` struct in both `no_std` and `std` environments.
 pub trait SerialPortManagerTrait {
     /// This method opens the UART device (incl. `no_std`), and assigns it (via
     /// a mutable reference) to the struct. It accepts a *optional* device

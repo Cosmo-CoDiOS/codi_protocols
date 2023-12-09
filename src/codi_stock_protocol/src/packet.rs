@@ -10,9 +10,15 @@ const CODI_STOCK_PACKET_HEADER: [u8; 4] = [58, 21, 58, 21];
 /// This trait (`StockCoDiPacketTrait`) acts as a specification for each
 /// individual incoming/outgoing stock `CoDi` serial packet.
 pub trait StockCoDiPacketTrait {
-    /// This returns the header of each 'stock' `CoDi` packet
-    fn get_header(&self) -> [u8; 4] {
+    /// Return header as a 4 byte `[u8; 4]` array.
+    #[must_use]
+    fn get_header() -> [u8; 4] {
         CODI_STOCK_PACKET_HEADER
+    }
+    /// Return header as a `Vec<u8>`
+    #[must_use]
+    fn get_header_as_vec() -> Vec<u8> {
+        CODI_STOCK_PACKET_HEADER.to_vec()
     }
     /// This method returns the command used in the packet.
     fn get_command(&self) -> StockCoDiPacketCommandKind;
@@ -26,6 +32,7 @@ pub trait StockCoDiPacketTrait {
 
 #[derive(Debug)]
 /// This struct is an *individual* container of each `CoDi` packet.
+#[derive(Default)]
 pub struct StockCoDiPacket {
     cmd: StockCoDiPacketCommandKind,
     payload: Vec<u8>,
@@ -35,6 +42,7 @@ pub struct StockCoDiPacket {
 impl StockCoDiPacket {
     /// This function accepts a 'Command', 'Payload', and the 'Direction' that the `CoDi` packet is
     /// going.
+    #[must_use]
     pub fn new(
         cmd: StockCoDiPacketCommandKind,
         payload: Vec<u8>,
@@ -48,32 +56,19 @@ impl StockCoDiPacket {
     }
 }
 
-impl Into<Vec<u8>> for StockCoDiPacket {
-    fn into(self) -> Vec<u8> {
+impl From<StockCoDiPacket> for Vec<u8> {
+    fn from(val: StockCoDiPacket) -> Self {
         let mut data: Vec<u8> = Vec::new();
 
-        data.extend(CODI_STOCK_PACKET_HEADER.to_vec());
-        data.push(self.cmd as u8);
-        data.extend(&self.payload);
+        data.extend(StockCoDiPacket::get_header_as_vec());
+        data.push(val.cmd as u8);
+        data.extend(&val.payload);
 
         data
     }
 }
 
-impl Default for StockCoDiPacket {
-    fn default() -> Self {
-        Self {
-            cmd: Default::default(),
-            payload: Vec::new(),
-            direction: Default::default(),
-        }
-    }
-}
-
 impl StockCoDiPacketTrait for StockCoDiPacket {
-    fn get_header(&self) -> [u8; 4] {
-        CODI_STOCK_PACKET_HEADER
-    }
     fn get_command(&self) -> StockCoDiPacketCommandKind {
         self.cmd
     }

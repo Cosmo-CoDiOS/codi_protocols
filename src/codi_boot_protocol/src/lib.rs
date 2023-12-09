@@ -1,4 +1,4 @@
-//! This crate defines the protocol for communicating with the new CoDi
+//! This crate defines the protocol for communicating with the new `CoDi`
 //! bootloader (`codi_bootload`)
 #![cfg_attr(target_arch = "arm", no_std)]
 #![deny(

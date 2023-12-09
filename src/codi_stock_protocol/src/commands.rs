@@ -1,4 +1,4 @@
-//! This module contains an enum of the different stock CoDi high-level commands
+//! This module contains an enum of the different stock `CoDi` high-level commands
 //! to be sent over serial.
 
 macro_rules! back_to_enum {

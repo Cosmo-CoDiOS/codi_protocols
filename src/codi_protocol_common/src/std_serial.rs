@@ -16,6 +16,7 @@ impl SerialPortManager {
     #[allow(dead_code)]
     /// This method returns an instance of `SerialPortManager`, with the
     /// `serial` field populated as `None`.
+    #[must_use]
     pub fn new(dev: &str, baud: u32) -> Self {
         Self {
             serial: Some(
