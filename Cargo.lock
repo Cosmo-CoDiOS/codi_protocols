@@ -85,7 +85,7 @@ checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
 
 [[package]]
 name = "codi_boot_protocol"
-version = "0.6.0"
+version = "0.9.1"
 dependencies = [
  "anyhow",
  "codi_protocol_common",
@@ -98,16 +98,17 @@ dependencies = [
 
 [[package]]
 name = "codi_daemon_protocol"
-version = "0.6.0"
+version = "0.9.1"
 dependencies = [
  "anyhow",
  "codi_protocol_common",
- "thiserror-no-std",
+ "core2",
+ "thiserror",
 ]
 
 [[package]]
 name = "codi_os_protocol"
-version = "0.6.0"
+version = "0.9.1"
 dependencies = [
  "anyhow",
  "codi_protocol_common",
@@ -120,7 +121,7 @@ dependencies = [
 
 [[package]]
 name = "codi_protocol_common"
-version = "0.9.0"
+version = "0.9.1"
 dependencies = [
  "anyhow",
  "core2",
@@ -130,7 +131,7 @@ dependencies = [
 
 [[package]]
 name = "codi_stock_protocol"
-version = "0.9.0"
+version = "0.9.1"
 dependencies = [
  "anyhow",
  "codi_protocol_common",
@@ -419,7 +420,7 @@ dependencies = [
  "itertools",
  "proc-macro2",
  "quote 1.0.32",
- "syn",
+ "syn 1.0.109",
 ]
 
 [[package]]
@@ -559,6 +560,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "syn"
+version = "2.0.32"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "239814284fd6f1a4ffe4ca893952cdd93c224b6a1571c9a9eadd670295c0c9e2"
+dependencies = [
+ "proc-macro2",
+ "quote 1.0.32",
+ "unicode-ident",
+]
+
+[[package]]
 name = "tempfile"
 version = "3.6.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -573,6 +585,26 @@ dependencies = [
 ]
 
 [[package]]
+name = "thiserror"
+version = "1.0.55"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6e3de26b0965292219b4287ff031fcba86837900fe9cd2b34ea8ad893c0953d2"
+dependencies = [
+ "thiserror-impl",
+]
+
+[[package]]
+name = "thiserror-impl"
+version = "1.0.55"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "268026685b2be38d7103e9e507c938a1fcb3d7e6eb15e87870b617bf37b6d581"
+dependencies = [
+ "proc-macro2",
+ "quote 1.0.32",
+ "syn 2.0.32",
+]
+
+[[package]]
 name = "thiserror-impl-no-std"
 version = "2.0.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -580,7 +612,7 @@ checksum = "58e6318948b519ba6dc2b442a6d0b904ebfb8d411a3ad3e07843615a72249758"
 dependencies = [
  "proc-macro2",
  "quote 1.0.32",
- "syn",
+ "syn 1.0.109",
 ]
 
 [[package]]
