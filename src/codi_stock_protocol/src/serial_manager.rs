@@ -3,7 +3,18 @@
 use codi_protocol_common::common::{SerialPortManagerResult, SerialPortManagerTrait};
 use codi_protocol_common::reexports::serialport;
 use codi_protocol_common::serial::SerialPortManager;
+
+#[cfg(target_arch = "arm")]
+use alloc::string::String;
+
+#[cfg(target_arch = "arm")]
+use alloc::vec::Vec;
+
+#[cfg(target_arch = "arm")]
 use core2::io::{Read, Write};
+
+#[cfg(any(target_arch = "x86_64", target_arch = "aarch64"))]
+use std::io::{Read, Write};
 
 #[allow(missing_debug_implementations)]
 /// This is a wrapper around `SerialPortManager`, as Rust doesn't allow `impl`s of external types.

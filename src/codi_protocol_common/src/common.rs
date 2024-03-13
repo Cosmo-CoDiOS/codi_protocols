@@ -15,6 +15,9 @@ use core2::io::{Read, Write};
 #[cfg(any(target_arch = "x86_64", target_arch = "aarch64"))]
 use std::io::{Read, Write};
 
+#[cfg(any(target_arch = "x86_64", target_arch = "aarch64"))]
+use std::vec::Vec;
+
 use self::errors::SerialPortManagerError;
 
 pub mod errors {
