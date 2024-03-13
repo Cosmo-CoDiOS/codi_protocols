@@ -6,6 +6,21 @@ members = [
     "src/codi_protocol_common",
     "src/codi_stock_protocol",
 ]
+resolver = "1"
+
+[workspace.package]
+authors = ["The Cosmo-CoDiOS Developers <shymega@shymega.org.uk>"]
+rust-version = "1.67.0"
+homepage = "https://github.com/Cosmo-CoDiOS"
+readme = "README.md"
+repository = "https://github.com/Cosmo-CoDiOS/CoDiOS.git"
+edition = "2018"
+
+[workspace.dependencies]
+anyhow = { version = "1.0.72", default-features = false }
+core2 = { version = "0.4.0", default-features = false }
+thiserror-no-std = "2.0.2"
+structure = { git = "https://github.com/liranringel/structure" }
 
 [profile.dev]
 lto = true

@@ -1,12 +1,18 @@
 [package]
 name = "codi_os_protocol"
 version = "0.6.0"
-edition = "2021"
+edition.workspace = true
+authors.workspace = true
+# license.workspace = true
+homepage.workspace = true
+readme.workspace = true
+rust-version.workspace = true
+repository.workspace = true
 
 [dependencies]
-anyhow = { version = "1.0.72", default-features = false }
-core2 = { version = "0.4.0", default-features = false }
-thiserror-no-std = "2.0.2"
+anyhow.workspace = true
+core2.workspace = true
+thiserror-no-std.workspace = true
 
 [dependencies.prost]
 version = "0.11.9"
